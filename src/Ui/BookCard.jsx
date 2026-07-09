@@ -1,9 +1,10 @@
 
 import { CiStar } from 'react-icons/ci';
+import { Link } from 'react-router-dom';
 
 const BookCard = ({ book }) => {
   return (
-    <div className="w-full">
+    <Link to={`/bookDetails/${book.bookId}`} className="w-full">
       <div className="card h-full w-full max-w-96 overflow-hidden rounded-[1.5rem] border border-base-300/70 bg-white shadow-[0_12px_30px_-18px_rgba(15,23,42,0.35)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-16px_rgba(15,23,42,0.35)]">
         <figure className="relative h-72 overflow-hidden bg-base-200">
           <img
@@ -19,7 +20,7 @@ const BookCard = ({ book }) => {
           </h2>
 
           <div className="flex flex-wrap gap-2">
-            {book.tags?.map((tag, index) => (
+            {book.tags.map((tag, index) => (
               <div key={index} className="badge border-primary/30 bg-primary/5 text-primary">
                 {tag}
               </div>
@@ -39,7 +40,7 @@ const BookCard = ({ book }) => {
           </div>
         </div>
       </div>
-    </div>
+    </ Link>
   );
 };
 
