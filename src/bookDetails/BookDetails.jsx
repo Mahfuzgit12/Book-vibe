@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
+import { BookContext } from "../context/BookContext";
 
 const BookDetails = () => {
   const { bookParamsId } = useParams();
   const books = useLoaderData();
+  const { handleMarkAsRead } = useContext(BookContext);
 
   const selectedBook = books.find(
     (book) => String(book.bookId) === String(bookParamsId)
@@ -104,11 +107,12 @@ const BookDetails = () => {
               </div>
             </div>
 
-            <div className="mt-auto flex flex-wrap items-center justify-between gap-4 border-t border-dashed border-base-300 pt-4">
-              <p className="text-sm text-base-content/70">
+            <div className="mt-auto flex flex-wrap items-center justify-center-safe gap-4 border-t border-dashed border-base-300 pt-4">
+              {/* <p className="text-sm text-base-content/70">
                 A rich literary experience designed to inspire your next read.
-              </p>
-              
+              </p> */}
+              <button className="btn hover-3d" onClick={()=> handleMarkAsRead(selectedBook)}> Mark as Read</button>
+              <button className="btn btn-primary hover-3d">Add to Wishlist</button>
             </div>
           </div>
         </div>
